@@ -1,6 +1,5 @@
 import {Component} from "@angular/core";
 
-
 var bluetooth = require("nativescript-bluetooth");
 
 @Component({
@@ -50,4 +49,31 @@ export class AppComponent {
       }
     });
   }
+
+  moveFwd() {
+    bluetooth.writeWithoutResponse({
+      peripheralUUID: this.UUID,
+      serviceUUID: 'ffe5',
+      characteristicUUID: 'ffe9',
+      value: '0x71,0x15,0xff' // in hex 1
+    }).then(function(result) {
+      console.log("value written");
+    }).then(function(err) {
+      console.log("write error: " + err);
+    });
+  }
+
+  moveBck() {
+    bluetooth.writeWithoutResponse({
+      peripheralUUID: this.UUID,
+      serviceUUID: "ffe5",
+      characteristicUUID: "ffe9",
+      value: "0x71,0x15,0xff"
+    }).then(function(result) {
+      console.log("value written");
+    }).then(function(err) {
+      console.log("write error; " + err);
+    });
+  }
+
 }

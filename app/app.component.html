@@ -1,6 +1,11 @@
-<StackLayout>
-  <Button text="check permissions" (tap)="hasPermissions()"></Button>
-  <Button text="get permissions" (tap)="grantPermissions()"></Button>
-  <Button text="scan" (tap)="scan()"></Button>
-  <Button text="connect" (tap)="connect()"></Button>
-</StackLayout>
+<ScrollView>
+  <StackLayout>
+    <Button text="check permissions" (tap)="hasPermissions()"></Button>
+    <Button text="get permissions" (tap)="grantPermissions()"></Button>
+    <Button text="scan" (tap)="scan()"></Button>
+    <Button text="connect" (tap)="connect()"></Button>
+
+    <Button text="^" (tap)="moveFwd()"></Button>
+    <Button text="v" (tap)="moveBck()"></Button>
+  </StackLayout>
+</ScrollView>
