@@ -115,4 +115,31 @@ export class AppComponent {
     });
   }
 
+  getDistance() {
+    bluetooth.writeWithoutResponse({
+      peripheralUUID: this.UUID,
+      serviceUUID: "ffe5",
+      characteristicUUID: "ffe9",
+      value: "0x89,0x0,0x0,0x0,0x50,0x50"
+    }).then(function(result) {
+      console.log(`distance travelled: ${result}`);
+    }).then(function(err) {
+      console.log("write error; " + err);
+    });
+  }
+
+  shout() {
+    var sound = Math.floor(Math.random() * 106);
+    bluetooth.writeWithoutResponse({
+      peripheralUUID: this.UUID,
+      serviceUUID: "ffe5",
+      characteristicUUID: "ffe9",
+      value: `0x06,0x${sound}`
+    }).then(function(result) {
+      console.log("value written");
+    }).then(function(err) {
+      console.log("write error; " + err);
+    });
+  }
+
 }
