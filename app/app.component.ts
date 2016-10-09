@@ -76,4 +76,30 @@ export class AppComponent {
     });
   }
 
+  turnLeft() {
+    bluetooth.writeWithoutResponse({
+      peripheralUUID: this.UUID,
+      serviceUUID: "ffe5",
+      characteristicUUID: "ffe9",
+      value: "0x74,0x60,0x10"
+    }).then(function(result) {
+      console.log("value written");
+    }).then(function(err) {
+      console.log("write error; " + err);
+    });
+  }
+
+  turnRight() {
+    bluetooth.writeWithoutResponse({
+      peripheralUUID: this.UUID,
+      serviceUUID: "ffe5",
+      characteristicUUID: "ffe9",
+      value: "0x74,0x60,0x10"
+    }).then(function(result) {
+      console.log("value written");
+    }).then(function(err) {
+      console.log("write error; " + err);
+    });
+  }
+
 }
